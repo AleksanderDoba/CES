@@ -1,0 +1,22 @@
+CC = g++
+CFLAGS = -c -Wall
+
+all: example
+
+example: position_component.o velocity_component.o example.o movement_system.o
+	$(CC) position_component.o velocity_component.o example.o movement_system.o -o example
+
+velocity_component.o: velocity_component.cpp
+	$(CC) $(CFLAGS) velocity_component.cpp
+
+position_component.o: position_component.cpp
+	$(CC) $(CFLAGS) position_component.cpp
+
+movement_system.o: movement_system.cpp
+	$(CC) $(CFLAGS) movement_system.cpp
+
+example.o: example.cpp
+	$(CC) $(CFLAGS) example.cpp
+
+clean:
+	rm -rf *o hello
